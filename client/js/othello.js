@@ -118,7 +118,6 @@ Othello.prototype = {
   },
 
   onclick : function(e) {
-    console.log([e.layerX, e.layerY]);
     if(e.layerX > 652 && e.layerX < 754 && e.layerY > 280 && e.layerY < 324) {
       this.pass();
     }
