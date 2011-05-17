@@ -1,0 +1,32 @@
+<!doctype html>
+<title>おせろ</title>
+<!--<select name="players" id="players" size="30" style="width:300px"></select>-->
+<canvas id="canvas" width="800" height="600" style="position:relative"></canvas>
+<script src="js/lobby.js"></script>
+<script src="js/othello.js"></script>
+<script>
+var conn = new WebSocket("ws://localhost:8080/");
+
+function startLobby() {
+  var players = document.getElementById("players");
+  var lobby = new Lobby(canvas.getContext('2d'));
+  players.onclick = function(e){lobby.onclick(e)};
+  conn.onmessage = function(e){lobby.onmessage(e);};
+}
+
+function startOthello() {
+  var canvas = document.getElementById("canvas");
+  var player1 = new LocalPlayer('Player1');
+  var player2 = new RemotePlayer('Player2', conn);
+  var othello = new Othello(canvas.getContext('2d'));
+  canvas.onclick = function(e){othello.onclick(e)};
+  conn.onmessage = function(e){othello.onmessage(e);};
+  othello.start(player1, player2);
+}
+
+onload = function() {
+  startOthello();  
+}
+
+</script>
+
