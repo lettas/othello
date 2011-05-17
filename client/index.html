@@ -17,7 +17,7 @@ function startLobby() {
 function startOthello() {
   var canvas = document.getElementById("canvas");
   var player1 = new LocalPlayer('Player1');
-  var player2 = new RemotePlayer('Player2', conn);
+  var player2 = new LocalPlayer('Player2', conn);
   var othello = new Othello(canvas.getContext('2d'));
   canvas.onclick = function(e){othello.onclick(e)};
   conn.onmessage = function(e){othello.onmessage(e);};

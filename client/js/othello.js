@@ -138,7 +138,7 @@ Othello.prototype = {
 }
 
 /**
- * プレイヤー
+ * プレイヤーの抽象クラス
  */
 var Player = function(name) {
   this.name = name;
@@ -191,6 +191,7 @@ RemotePlayer.prototype.notifyPut = function(x, y) {
 RemotePlayer.prototype.notifyPass = function() {
   conn.send({action:'pass'});  
 }
+
 /**
  * 板
  */
