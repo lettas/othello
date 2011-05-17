@@ -146,9 +146,6 @@ Player.prototype = {
   getName : function() {
     return this.name;
   },
-  respondsTo : function(eventType) {
-    return false;
-  },
   onclick : function(othello, e) {},
   onmessage : function(othello, e) {},
   notifyPut : function(x, y) {},
@@ -178,9 +175,6 @@ var RemotePlayer = function(name, conn) {
   this.conn = conn;
 }
 RemotePlayer.prototype = new Player();
-RemotePlayer.prototype.respondsTo = function(eventType) {
-  return eventType == 'onmessage';
-}
 RemotePlayer.prototype.onmessage = function(othello, e) {
   othello.update(e.x, e.y);
 }
