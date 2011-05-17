@@ -5,7 +5,10 @@
 <script src="js/lobby.js"></script>
 <script src="js/othello.js"></script>
 <script>
-var conn = new WebSocket("ws://localhost:8080/");
+var conn = {};
+if(window["WebSocket"]) {
+  conn = new WebSocket("ws://localhost:8080/");
+}
 
 function startLobby() {
   var players = document.getElementById("players");
